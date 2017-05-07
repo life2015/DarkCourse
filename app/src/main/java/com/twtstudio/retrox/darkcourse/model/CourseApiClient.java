@@ -7,7 +7,7 @@ package com.twtstudio.retrox.darkcourse.model;
 public class CourseApiClient {
     public static CourseApi courseApi = DefaultRetrofitBuilder
             .getBuilder()
-            .baseUrl("http://"+UrlProvider.getUrl()+"course/")
+            .baseUrl(UrlProvider.getUrl()+"course/")
             .build()
             .create(CourseApi.class);
 }

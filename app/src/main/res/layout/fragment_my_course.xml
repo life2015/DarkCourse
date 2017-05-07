@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <variable
+            name="viewModel"
+            type="com.twtstudio.retrox.darkcourse.user.course.CourseListViewModel"/>
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
     </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -8,7 +12,9 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rec_course"
+        app:layoutManager="@{LayoutManagers.linear()}"
+        app:items="@{viewModel.items}"
+        app:itemBinding="@{viewModel.itemBinding}"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>

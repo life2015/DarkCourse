@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.kelin.mvvmlight.base.ViewModel;
+import com.twtstudio.retrox.darkcourse.BR;
 import com.twtstudio.retrox.darkcourse.R;
 
 /**
@@ -24,9 +24,9 @@ public class MyCourseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 //        View view = inflater.inflate(R.layout.fragment_my_course,container,false);
         ViewDataBinding viewDataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_course, container, false);
-//        viewDataBinding.setVariable();
+        CourseListViewModel courseListViewModel = new CourseListViewModel();
+        viewDataBinding.setVariable(BR.viewModel, courseListViewModel);
         return viewDataBinding.getRoot();
     }
-
 
 }

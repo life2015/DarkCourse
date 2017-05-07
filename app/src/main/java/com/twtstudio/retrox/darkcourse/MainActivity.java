@@ -1,11 +1,14 @@
 package com.twtstudio.retrox.darkcourse;
 
 import android.os.Build;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.twtstudio.retrox.darkcourse.base.BaseActivity;
+import com.twtstudio.retrox.darkcourse.user.course.MyCourseFragment;
 
 public class MainActivity extends BaseActivity {
 
@@ -14,6 +17,10 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setDarkStatusIcon(true);
         setContentView(R.layout.activity_main);
+        FrameLayout frameLayout = (FrameLayout) findViewById(R.id.container);
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().add(R.id.container,new MyCourseFragment()).commit();
+
     }
 
 

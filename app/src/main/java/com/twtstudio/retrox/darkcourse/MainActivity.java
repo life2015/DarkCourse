@@ -1,7 +1,11 @@
 package com.twtstudio.retrox.darkcourse;
 
 import android.os.Build;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +13,10 @@ import android.widget.FrameLayout;
 
 import com.twtstudio.retrox.darkcourse.base.BaseActivity;
 import com.twtstudio.retrox.darkcourse.user.course.MyCourseFragment;
+import com.twtstudio.retrox.darkcourse.user.manage.AllCourseFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends BaseActivity {
 
@@ -17,21 +25,30 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setDarkStatusIcon(true);
         setContentView(R.layout.activity_main);
-        FrameLayout frameLayout = (FrameLayout) findViewById(R.id.container);
-        FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().add(R.id.container,new MyCourseFragment()).commit();
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        MyAdapter adapter = new MyAdapter(getSupportFragmentManager());
+
+        adapter.addFragment(new MyCourseFragment(),"My Course");
+        adapter.addFragment(new AllCourseFragment(),"Manage");
+        adapter.addFragment(new MyCourseFragment(),"Info");
+
+        viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(3);
+        tabLayout.setupWithViewPager(viewPager);
+
 
     }
 
 
     public void setDarkStatusIcon(boolean bDark) {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             View decorView = getWindow().getDecorView();
-            if(decorView != null){
+            if (decorView != null) {
                 int vis = decorView.getSystemUiVisibility();
-                if(bDark){
+                if (bDark) {
                     vis |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-                } else{
+                } else {
                     vis &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
                 }
                 decorView.setSystemUiVisibility(vis);
@@ -39,5 +56,34 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    private class MyAdapter extends FragmentPagerAdapter {
+
+        List<Fragment> fragments = new ArrayList<>();
+        List<String> names = new ArrayList<>();
+
+        public void addFragment(Fragment fragment, String name) {
+            fragments.add(fragment);
+            names.add(name);
+        }
+
+        public MyAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return fragments.get(position);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return names.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragments.size();
+        }
+    }
 
 }

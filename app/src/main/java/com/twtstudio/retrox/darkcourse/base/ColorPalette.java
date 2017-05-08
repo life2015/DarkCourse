@@ -13,7 +13,7 @@ public class ColorPalette {
     static int[] colors = {
             R.color.schedule_blue,
             R.color.schedule_blue2,
-            R.color.schedule_gray,
+//            R.color.schedule_gray,
             R.color.schedule_green,
             R.color.schedule_green2,
             R.color.schedule_green3,

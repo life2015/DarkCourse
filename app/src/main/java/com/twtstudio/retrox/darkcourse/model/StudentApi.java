@@ -21,5 +21,7 @@ public interface StudentApi {
 
     @GET("choose")
     Observable<ApiResponse<Boolean>> chooseCourse(@Query("cid") String cid);
-    
+
+    @GET("exitCourse")
+    Observable<ApiResponse<Boolean>> exitCourse(@Query("cid") String cid);
 }

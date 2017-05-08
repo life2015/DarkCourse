@@ -6,6 +6,6 @@ package com.twtstudio.retrox.darkcourse.model;
 
 public class UrlProvider {
     public static String getUrl(){
-        return "http://172.23.114.232:8080/";
+        return "http://172.24.75.199:8080/";
     }
 }

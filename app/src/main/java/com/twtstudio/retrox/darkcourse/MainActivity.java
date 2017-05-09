@@ -8,11 +8,14 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.twtstudio.retrox.darkcourse.base.BaseActivity;
 import com.twtstudio.retrox.darkcourse.user.course.MyCourseFragment;
+import com.twtstudio.retrox.darkcourse.user.info.StudentInfoFragment;
 import com.twtstudio.retrox.darkcourse.user.manage.AllCourseFragment;
 
 import java.util.ArrayList;
@@ -25,13 +28,18 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setDarkStatusIcon(true);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        new DrawerBuilder().withActivity(this)
+                .withToolbar(toolbar)
+                .build();
+
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         MyAdapter adapter = new MyAdapter(getSupportFragmentManager());
 
         adapter.addFragment(new MyCourseFragment(),"My Course");
         adapter.addFragment(new AllCourseFragment(),"Manage");
-        adapter.addFragment(new MyCourseFragment(),"Info");
+        adapter.addFragment(new StudentInfoFragment(),"Info");
 
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(3);

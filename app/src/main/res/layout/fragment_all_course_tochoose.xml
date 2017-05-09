@@ -7,8 +7,12 @@
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
     </data>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/srl_course_manage"
+    app:onRefreshCommand="@{viewModel.refreshCommand}"
+    app:refreshing="@{viewModel.viewStyle.refreshState}"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
@@ -17,5 +21,5 @@
         app:itemBinding="@{viewModel.itemBinding}"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-</LinearLayout>
+</android.support.v4.widget.SwipeRefreshLayout>
 </layout>

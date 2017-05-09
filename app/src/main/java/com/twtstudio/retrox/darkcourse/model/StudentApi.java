@@ -2,6 +2,7 @@ package com.twtstudio.retrox.darkcourse.model;
 
 import com.twtstudio.retrox.darkcourse.user.course.bean.MyCoursesBean;
 import com.twtstudio.retrox.darkcourse.user.course.bean.StudentData;
+import com.twtstudio.retrox.darkcourse.user.info.bean.StudentBean;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -24,4 +25,13 @@ public interface StudentApi {
 
     @GET("exitCourse")
     Observable<ApiResponse<Boolean>> exitCourse(@Query("cid") String cid);
+
+    @GET("getTotalScore")
+    Observable<ApiResponse<String>> getTotalScore();
+
+    @GET("getTotalCredit")
+    Observable<ApiResponse<String>> getTotalCredit();
+
+    @GET("login")
+    Observable<ApiResponse<StudentBean>> getInfo();
 }

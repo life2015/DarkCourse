@@ -55,11 +55,6 @@ dependencies {
 
     compile 'com.github.GrenderG:Toasty:1.2.3'
 
-    compile('com.mikepenz:materialdrawer:5.9.1@aar') {
-        transitive = true
-    }
-
-
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
 
     compile 'com.kelin.mvvmlight:library:1.0.0'

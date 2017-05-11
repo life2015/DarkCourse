@@ -5,7 +5,13 @@ package com.twtstudio.retrox.darkcourse.model;
  */
 
 public class UrlProvider {
+    static String url = "172.23.9.181:8080";
     public static String getUrl(){
-        return "http://172.23.99.207:8080/";
+        return "http://"+UrlProvider.url+"/";
     }
+
+    public static void setUrl(String url) {
+        UrlProvider.url = url;
+    }
+
 }

@@ -3,6 +3,7 @@ package com.twtstudio.retrox.darkcourse.model;
 import com.twtstudio.retrox.darkcourse.user.manage.bean.AllCourseBean;
 
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -13,5 +14,9 @@ public interface CourseApi {
 
     @GET("getAll")
     Observable<AllCourseBean> getAllCourses();
+
+    @GET("delete")
+    Observable<ApiResponse<Boolean>> deleteCourse(@Query("cid") String cid);
+
 
 }

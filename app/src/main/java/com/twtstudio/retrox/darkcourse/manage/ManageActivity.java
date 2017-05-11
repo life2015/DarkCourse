@@ -1,26 +1,27 @@
-package com.twtstudio.retrox.darkcourse;
+package com.twtstudio.retrox.darkcourse.manage;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 
+import com.twtstudio.retrox.darkcourse.MainActivity;
+import com.twtstudio.retrox.darkcourse.R;
 import com.twtstudio.retrox.darkcourse.base.BaseActivity;
-import com.twtstudio.retrox.darkcourse.manage.ManageActivity;
+import com.twtstudio.retrox.darkcourse.manage.course.CourseManageFragment;
 import com.twtstudio.retrox.darkcourse.model.UrlProvider;
 import com.twtstudio.retrox.darkcourse.user.course.MyCourseFragment;
 import com.twtstudio.retrox.darkcourse.user.info.StudentInfoFragment;
@@ -29,13 +30,19 @@ import com.twtstudio.retrox.darkcourse.user.manage.AllCourseFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity {
+import es.dmoral.toasty.Toasty;
+
+/**
+ * Created by retrox on 11/05/2017.
+ */
+
+public class ManageActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setDarkStatusIcon(true);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_manage);
         setTitle("");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -44,9 +51,8 @@ public class MainActivity extends BaseActivity {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         MyAdapter adapter = new MyAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(new MyCourseFragment(),"My Course");
-        adapter.addFragment(new AllCourseFragment(),"Manage");
-        adapter.addFragment(new StudentInfoFragment(),"Info");
+        adapter.addFragment(new CourseManageFragment(), "My Course");
+        adapter.addFragment(new CourseManageFragment(), "Manage");
 
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(3);
@@ -57,54 +63,24 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main,menu);
+        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.main_menu_manage:
-                Intent intent = new Intent(this, ManageActivity.class);
-                startActivity(intent);
                 // TODO: 09/05/2017 jump to manage page
                 break;
             case R.id.main_menu_account:
                 // TODO: 09/05/2017 jump to account page
                 break;
             case R.id.main_menu_server:
-                setIPAddr();
+                Toasty.info(this,"Please Change server address in main page").show();
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-
-    public void setIPAddr() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Title");
-
-        final EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        input.setHint("172.23.99.207:8080");
-        builder.setView(input);
-
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String text = input.getText().toString();
-                UrlProvider.setUrl(text);
-            }
-        });
-        builder.setTitle("Set your server Address");
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        builder.show();
     }
 
 
@@ -152,5 +128,6 @@ public class MainActivity extends BaseActivity {
             return fragments.size();
         }
     }
+
 
 }

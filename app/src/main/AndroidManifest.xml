@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".manage.ManageActivity"/>
+        <activity android:name=".manage.course.CourseAddActivity"/>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.twtstudio.retrox.darkcourse.manage.course;
 
+import android.content.Intent;
 import android.databinding.ObservableBoolean;
 import android.view.View;
 
@@ -69,6 +70,8 @@ public class CourseItemListViewModel implements ViewModel {
     }
 
     public final ReplyCommand<View> fabClick = new ReplyCommand<View>(view -> {
-        Toasty.info(view.getContext(),"interesting").show();
+        Intent intent = new Intent(view.getContext(),CourseAddActivity.class);
+        view.getContext().startActivity(intent);
+
     });
 }

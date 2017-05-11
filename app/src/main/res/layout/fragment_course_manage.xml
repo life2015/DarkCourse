@@ -17,6 +17,7 @@
         android:orientation="vertical">
 
         <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/srl_course_manage"
             app:onRefreshCommand="@{viewModel.refreshCommand}"
             app:refreshing="@{viewModel.viewStyle.refreshState}"
             android:layout_width="match_parent"

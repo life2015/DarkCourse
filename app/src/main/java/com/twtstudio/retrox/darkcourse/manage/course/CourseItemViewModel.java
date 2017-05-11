@@ -1,5 +1,6 @@
 package com.twtstudio.retrox.darkcourse.manage.course;
 
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
@@ -39,7 +40,13 @@ public class CourseItemViewModel implements ViewModel {
                 .setTitle(courseName)
                 .setMessage("Do you want to delete this course ? \n or update the course")
                 .setNeutralButton("Update Information",(dialog, which) -> {
-                    // TODO: 11/05/2017 update
+
+                    // update
+                    Intent intent = new Intent(view.getContext(),CourseAddActivity.class);
+                    intent.putExtra("cid",cid);
+                    intent.putExtra("update",true);
+                    view.getContext().startActivity(intent);
+
                 })
                 .setPositiveButton("Yes!",(dialog, which) -> {
                     CourseApiClient.courseApi.deleteCourse(cid)

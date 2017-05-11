@@ -1,8 +1,11 @@
 package com.twtstudio.retrox.darkcourse.model;
 
+import com.twtstudio.retrox.darkcourse.manage.course.bean.CourseBean;
 import com.twtstudio.retrox.darkcourse.user.manage.bean.AllCourseBean;
 
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -18,5 +21,13 @@ public interface CourseApi {
     @GET("delete")
     Observable<ApiResponse<Boolean>> deleteCourse(@Query("cid") String cid);
 
+    @POST("register")
+    Observable<ApiResponse<Boolean>> registerCourse(@Body CourseBean courseBean);
+
+    @POST("update")
+    Observable<ApiResponse<Boolean>> updateCourse(@Body CourseBean courseBean);
+
+    @GET("query")
+    Observable<ApiResponse<CourseBean>> queryCourse(@Query("cid") String cid);
 
 }

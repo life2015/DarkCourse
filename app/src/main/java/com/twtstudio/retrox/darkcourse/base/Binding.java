@@ -1,6 +1,8 @@
 package com.twtstudio.retrox.darkcourse.base;
 
 import android.databinding.BindingAdapter;
+import android.databinding.InverseBindingAdapter;
+import android.support.design.widget.TextInputEditText;
 import android.view.View;
 
 import com.kelin.mvvmlight.command.ReplyCommand;
@@ -21,5 +23,23 @@ public class Binding {
                 }
             }
         });
+    }
+
+    @BindingAdapter("android:text")
+    public static void bindIntegerInText(TextInputEditText tv, String value)
+    {
+
+        tv.setText(String.valueOf(value));
+
+        // Set the cursor to the end of the text
+        tv.setSelection(tv.getText().length());
+    }
+
+    @InverseBindingAdapter(attribute = "android:text")
+    public static int getIntegerFromBinding(TextInputEditText view)
+    {
+        String string = view.getText().toString();
+
+        return string.isEmpty() ? 0 : Integer.parseInt(string);
     }
 }

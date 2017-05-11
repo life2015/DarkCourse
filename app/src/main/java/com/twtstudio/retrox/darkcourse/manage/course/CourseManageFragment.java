@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.twtstudio.retrox.darkcourse.R;
+import com.twtstudio.retrox.darkcourse.base.ColorPalette;
 import com.twtstudio.retrox.darkcourse.databinding.FragmentCourseManageBinding;
 
 /**
@@ -22,6 +23,7 @@ public class CourseManageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentCourseManageBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_course_manage, container, false);
+        binding.srlCourseManage.setColorSchemeResources(ColorPalette.getColors());
         binding.setViewModel(new CourseItemListViewModel());
         return binding.getRoot();
 

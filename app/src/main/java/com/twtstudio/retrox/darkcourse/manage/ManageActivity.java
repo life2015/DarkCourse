@@ -51,8 +51,8 @@ public class ManageActivity extends BaseActivity {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         MyAdapter adapter = new MyAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(new CourseManageFragment(), "My Course");
-        adapter.addFragment(new CourseManageFragment(), "Manage");
+        adapter.addFragment(new CourseManageFragment(), "Course");
+        adapter.addFragment(new CourseManageFragment(), "Student");
 
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(3);

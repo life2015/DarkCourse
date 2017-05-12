@@ -118,7 +118,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="credit"
-                            android:text="@{viewModel.courseBean.credit}"
+                            android:text="@={viewModel.courseBean.credit}"
                             android:inputType="number" />
                     </android.support.design.widget.TextInputLayout>
 

@@ -67,5 +67,30 @@ public class CourseItemViewModel implements ViewModel {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        CourseItemViewModel that = (CourseItemViewModel) o;
+
+        if (color != that.color) return false;
+        if (courseName != null ? !courseName.equals(that.courseName) : that.courseName != null)
+            return false;
+        if (teacherName != null ? !teacherName.equals(that.teacherName) : that.teacherName != null)
+            return false;
+        if (credit != null ? !credit.equals(that.credit) : that.credit != null) return false;
+        return cid != null ? cid.equals(that.cid) : that.cid == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = courseName != null ? courseName.hashCode() : 0;
+        result = 31 * result + (teacherName != null ? teacherName.hashCode() : 0);
+        result = 31 * result + (credit != null ? credit.hashCode() : 0);
+        result = 31 * result + (cid != null ? cid.hashCode() : 0);
+        result = 31 * result + color;
+        return result;
+    }
 }

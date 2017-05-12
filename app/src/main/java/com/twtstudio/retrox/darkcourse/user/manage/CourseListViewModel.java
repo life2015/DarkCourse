@@ -35,7 +35,7 @@ public class CourseListViewModel implements ViewModel {
 
         @Override
         public boolean areContentsTheSame(CourseChooseItemViewModel oldItem, CourseChooseItemViewModel newItem) {
-            return oldItem.cid.equals(newItem.cid);
+            return oldItem.equals(newItem);
         }
     });
 

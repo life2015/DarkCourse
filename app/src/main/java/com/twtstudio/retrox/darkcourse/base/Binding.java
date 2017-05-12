@@ -30,7 +30,6 @@ public class Binding {
     {
 
         tv.setText(String.valueOf(value));
-
         // Set the cursor to the end of the text
         tv.setSelection(tv.getText().length());
     }

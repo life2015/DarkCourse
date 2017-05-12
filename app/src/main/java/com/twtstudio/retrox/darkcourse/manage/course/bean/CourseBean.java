@@ -14,12 +14,12 @@ public class CourseBean {
      * cid : 2100347
      */
 
-    public String teacher;
-    public String cancelYear;
-    public String minGrade;
-    public String cname;
-    public String credit;
-    public String cid;
+    public String teacher = "";
+    public String cancelYear = "";
+    public String minGrade = "";
+    public String cname = "";
+    public String credit = "";
+    public String cid = "";
 
     @Override
     public String toString() {

@@ -22,6 +22,7 @@ import com.twtstudio.retrox.darkcourse.MainActivity;
 import com.twtstudio.retrox.darkcourse.R;
 import com.twtstudio.retrox.darkcourse.base.BaseActivity;
 import com.twtstudio.retrox.darkcourse.manage.course.CourseManageFragment;
+import com.twtstudio.retrox.darkcourse.manage.student.StudentManageFragment;
 import com.twtstudio.retrox.darkcourse.model.UrlProvider;
 import com.twtstudio.retrox.darkcourse.user.course.MyCourseFragment;
 import com.twtstudio.retrox.darkcourse.user.info.StudentInfoFragment;
@@ -52,7 +53,7 @@ public class ManageActivity extends BaseActivity {
         MyAdapter adapter = new MyAdapter(getSupportFragmentManager());
 
         adapter.addFragment(new CourseManageFragment(), "Course");
-        adapter.addFragment(new CourseManageFragment(), "Student");
+        adapter.addFragment(new StudentManageFragment(), "Student");
 
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(3);

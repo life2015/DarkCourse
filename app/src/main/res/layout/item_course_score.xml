@@ -11,6 +11,7 @@
     </data>
 
     <android.support.v7.widget.CardView
+        app:clickCommand="@{viewModel.clickCommand}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"

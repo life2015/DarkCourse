@@ -30,6 +30,7 @@ public class CourseItemViewModel implements ViewModel {
     public String teacherName = " ";
     public String credit = " ";
     public String cid;
+    public final ObservableField<String> score = new ObservableField<>();
 
     public static int postion = 0;
 
@@ -54,6 +55,14 @@ public class CourseItemViewModel implements ViewModel {
         dialog.show();
     });
 
+    public void getScore(){
+        StudentApiClient.studentApi.getCourseScore(cid)
+                .subscribeOn(Schedulers.io())
+                .map(stringApiResponse -> stringApiResponse.data)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(score::set,new RxErrorHandler());
+    }
+
     private CourseItemViewModel(String courseName, String teacherName, Object credit) {
         this.courseName = courseName;
         this.teacherName = teacherName;
@@ -64,6 +73,7 @@ public class CourseItemViewModel implements ViewModel {
     public CourseItemViewModel(MyCoursesBean.DataBean dataBean) {
         this(dataBean.cname, dataBean.teacher, dataBean.credit);
         cid = dataBean.cid;
+        getScore();
     }
 
 

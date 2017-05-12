@@ -38,4 +38,7 @@ public interface CourseApi {
 
     @GET("getAverageScore")
     Observable<ApiResponse<String>> getAverageScore(@Query("cid") String cid);
+
+    @GET("setScore")
+    Observable<ApiResponse<Boolean>> setScore(@Query("sid") String sid, @Query("cid") String cid);
 }

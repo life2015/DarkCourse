@@ -48,4 +48,7 @@ public interface StudentApi {
 
     @GET("getAllStudent")
     Observable<ApiResponse<List<StudentBean>>> getAllStudent();
+
+    @GET("getCourseScore")
+    Observable<ApiResponse<String>> getCourseScore(@Query("cid") String cid);
 }

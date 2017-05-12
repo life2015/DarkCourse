@@ -18,7 +18,12 @@ public class AuthInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request original = chain.request();
         HttpUrl.Builder builder = original.url().newBuilder();
-        HttpUrl httpUrl = builder.addQueryParameter("sid", Hawk.get("sid")).build();
+        HttpUrl httpUrl = null;
+        if (original.url().queryParameter("sid")==null){
+           httpUrl = builder.addQueryParameter("sid", Hawk.get("sid")).build();
+        }else {
+            httpUrl = builder.build();
+        }
         Request.Builder requestBuilder = original.newBuilder().url(httpUrl);
         Request request = requestBuilder.build();
         return chain.proceed(request);

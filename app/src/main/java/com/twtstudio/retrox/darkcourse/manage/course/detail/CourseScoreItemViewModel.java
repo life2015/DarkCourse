@@ -53,7 +53,7 @@ public class CourseScoreItemViewModel extends BaseObservable implements ViewMode
                         if (ss > 100 || ss < 0) {
                             Toasty.error(view.getContext(), "Please write down the right score!").show();
                         } else {
-                            CourseApiClient.courseApi.setScore(courseScoreBean.sid, courseScoreBean.cid)
+                            CourseApiClient.courseApi.setScore(courseScoreBean.sid, courseScoreBean.cid,text)
                                     .subscribeOn(Schedulers.io())
                                     .map(booleanApiResponse -> booleanApiResponse.data)
                                     .observeOn(AndroidSchedulers.mainThread())

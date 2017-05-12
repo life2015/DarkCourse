@@ -35,7 +35,7 @@ public class DefaultRetrofitBuilder {
                 .addInterceptor(loggingInterceptor)
 //                .addNetworkInterceptor(new StethoInterceptor())
                 .addInterceptor(new AuthInterceptor())
-                .retryOnConnectionFailure(false)
+                .retryOnConnectionFailure(true)
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .build();
 

@@ -1,7 +1,10 @@
 package com.twtstudio.retrox.darkcourse.model;
 
 import com.twtstudio.retrox.darkcourse.manage.course.bean.CourseBean;
+import com.twtstudio.retrox.darkcourse.manage.course.bean.CourseScoreBean;
 import com.twtstudio.retrox.darkcourse.user.manage.bean.AllCourseBean;
+
+import java.util.List;
 
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -30,4 +33,9 @@ public interface CourseApi {
     @GET("query")
     Observable<ApiResponse<CourseBean>> queryCourse(@Query("cid") String cid);
 
+    @GET("getTotalScoreInfo")
+    Observable<ApiResponse<List<CourseScoreBean>>> getTotalScoreInfo(@Query("cid") String cid);
+
+    @GET("getAverageScore")
+    Observable<ApiResponse<String>> getAverageScore(@Query("cid") String cid);
 }

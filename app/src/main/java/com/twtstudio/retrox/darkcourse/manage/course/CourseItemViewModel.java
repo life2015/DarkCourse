@@ -9,6 +9,7 @@ import com.kelin.mvvmlight.base.ViewModel;
 import com.kelin.mvvmlight.command.ReplyCommand;
 import com.twtstudio.retrox.darkcourse.APP;
 import com.twtstudio.retrox.darkcourse.base.ColorPalette;
+import com.twtstudio.retrox.darkcourse.manage.course.detail.CourseDetailActivity;
 import com.twtstudio.retrox.darkcourse.model.CourseApiClient;
 import com.twtstudio.retrox.darkcourse.model.RxErrorHandler;
 import com.twtstudio.retrox.darkcourse.user.manage.bean.AllCourseBean;
@@ -36,6 +37,11 @@ public class CourseItemViewModel implements ViewModel {
     public String credit;
 
     public final ReplyCommand<View> clickCommand = new ReplyCommand<View>(view -> {
+
+        Intent intent1 = new Intent(view.getContext(), CourseDetailActivity.class);
+        intent1.putExtra("cid",cid);
+        view.getContext().startActivity(intent1);
+
         new AlertDialog.Builder(view.getContext())
                 .setTitle(courseName)
                 .setMessage("Do you want to delete this course ? \n or update the course")
@@ -59,8 +65,8 @@ public class CourseItemViewModel implements ViewModel {
 //                                    Messenger.getDefault().sendNoMsg(CourseListViewModel.TOKEN_MY_COURSE_REFRESH);
                                 }
                             }, new RxErrorHandler());
-                }).setNegativeButton("No",(dialog, which) -> {})
-                .show();
+                }).setNegativeButton("No",(dialog, which) -> {});
+//                .show();
 
     });
 

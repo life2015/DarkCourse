@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 
 import com.twtstudio.retrox.darkcourse.base.BaseActivity;
+import com.twtstudio.retrox.darkcourse.login.LoginActivity;
 import com.twtstudio.retrox.darkcourse.manage.ManageActivity;
 import com.twtstudio.retrox.darkcourse.model.UrlProvider;
 import com.twtstudio.retrox.darkcourse.user.course.MyCourseFragment;
@@ -71,6 +72,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.main_menu_account:
                 // TODO: 09/05/2017 jump to account page
+                Intent intent1 = new Intent(this, LoginActivity.class);
+                startActivity(intent1);
+                finish();
                 break;
             case R.id.main_menu_server:
                 setIPAddr();

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/score_menu_average"
+        android:title="Average"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/score_menu_manage"
+        android:title="Manage"
+        app:showAsAction="never" />
+
+</menu>

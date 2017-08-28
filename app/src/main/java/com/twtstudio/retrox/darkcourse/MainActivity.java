@@ -89,7 +89,7 @@ public class MainActivity extends BaseActivity {
         builder.setTitle("Title");
 
         final EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        input.setInputType(InputType.TYPE_CLASS_TEXT );
         input.setHint("172.23.99.207:8080");
         builder.setView(input);
 

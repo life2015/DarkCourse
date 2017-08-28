@@ -3,6 +3,7 @@ package com.twtstudio.retrox.darkcourse.base;
 import android.databinding.BindingAdapter;
 import android.databinding.InverseBindingAdapter;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 
 import com.kelin.mvvmlight.command.ReplyCommand;
@@ -20,6 +21,18 @@ public class Binding {
             public void onClick(View v) {
                 if (clickCommand != null) {
                     clickCommand.execute(v);
+                }
+            }
+        });
+    }
+
+    @BindingAdapter({"onRefreshCommand"})
+    public static void onRefreshCommand(SwipeRefreshLayout swipeRefreshLayout, final ReplyCommand onRefreshCommand) {
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if (onRefreshCommand != null) {
+                    onRefreshCommand.execute();
                 }
             }
         });

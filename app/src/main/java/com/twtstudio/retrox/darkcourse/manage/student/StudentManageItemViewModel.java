@@ -50,23 +50,24 @@ public class StudentManageItemViewModel extends BaseObservable{
     }
 
     public void getData(){
+        // TODO: 13/05/2017 减少网络请求
         StudentApiClient.studentApi.query(sid)
                 .subscribeOn(Schedulers.io())
                 .map(studentBeanApiResponse -> studentBeanApiResponse.data)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::setStudent,new RxErrorHandler());
+                .subscribe(this::setStudent,Throwable::printStackTrace);
 
         StudentApiClient.studentApi.getTotalScore(sid)
                 .subscribeOn(Schedulers.io())
                 .map(doubleApiResponse -> doubleApiResponse.data)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(totalScore::set,new RxErrorHandler());
+                .subscribe(totalScore::set,Throwable::printStackTrace);
 
         StudentApiClient.studentApi.getTotalCredit(sid)
                 .subscribeOn(Schedulers.io())
                 .map(doubleApiResponse -> doubleApiResponse.data)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(totalCredit::set,new RxErrorHandler());
+                .subscribe(totalCredit::set,Throwable::printStackTrace);
     }
 
     @Override
